@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 /// State of background color bloc
 class BackgroundColorState {
+  /// Stores current background color
+  final Color color;
+
   /// Creates new state value
   ///
   /// [color] - object of [Color]
   BackgroundColorState(this.color);
-
-  /// Stores current background color
-  final Color color;
 
   /// Returns HEX value as [String]
   String get hex {
