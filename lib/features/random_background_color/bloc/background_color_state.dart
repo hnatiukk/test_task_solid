@@ -1,18 +1,23 @@
-import 'dart:ui' show Color;
+import 'package:flutter/material.dart';
 
 /// State of background color bloc
 class BackgroundColorState {
   /// Stores current background color
   final Color color;
 
-  /// Returns red channel value as [String]
-  String get r => color.r.toStringAsFixed(3);
+  /// Returns HEX value as [String]
+  String get hex {
+    final r = _channelValueToString(color.r);
+    final g = _channelValueToString(color.g);
+    final b = _channelValueToString(color.b);
+    return '#${r.toUpperCase()}${g.toUpperCase()}${b.toUpperCase()}';
+  }
 
-  /// Returns green channel value as [String]
-  String get g => color.g.toStringAsFixed(3);
-
-  /// Returns blue channel value as [String]
-  String get b => color.b.toStringAsFixed(3);
+  /// Recreates the logic of deprecated [Color] getters
+  /// (red, green, blue) but returns result as a [String]
+  String _channelValueToString(double value) {
+    return ((value * 255.0).round() & 0xff).toRadixString(16).padLeft(2, '0');
+  }
 
   /// Creates new state value
   ///

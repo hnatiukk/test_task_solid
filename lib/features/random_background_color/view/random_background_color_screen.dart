@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_task_solid/core/utils.dart';
 import 'package:test_task_solid/features/random_background_color/bloc/background_color_bloc.dart';
 import 'package:test_task_solid/features/random_background_color/bloc/background_color_event.dart';
 import 'package:test_task_solid/features/random_background_color/bloc/background_color_state.dart';
@@ -14,22 +16,33 @@ class RandomBackgroundColorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<BackgroundColorBloc, BackgroundColorState>(
-        builder: (context, state) {
-          return GestureDetector(
-            onTap: () => _setRandomBackgroundColor(context),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              color: state.color,
-              child: const Center(child: TextBlock()),
-            ),
-          );
-        },
+      body: SafeArea(
+        child: BlocBuilder<BackgroundColorBloc, BackgroundColorState>(
+          builder: (context, state) {
+            return GestureDetector(
+              onTap: () => _setRandomBackgroundColor(context),
+              onLongPress: () =>
+                  _copyBackgroundColorHexToClipboard(context, state.hex),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                color: state.color,
+                child: const Center(child: TextBlock()),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
 
+  /// Set random background color callback
   void _setRandomBackgroundColor(BuildContext context) {
     context.read<BackgroundColorBloc>().add(SetRandomBackgroundColor());
+  }
+
+  /// Copy hex to clipboard callback
+  void _copyBackgroundColorHexToClipboard(BuildContext context, String hex) {
+    Clipboard.setData(ClipboardData(text: hex));
+    SnackBarUtil.showMessage(context, 'Hex copied');
   }
 }

@@ -26,17 +26,10 @@ class TextBlock extends StatelessWidget {
           const Text('Hey there'),
           BlocBuilder<BackgroundColorBloc, BackgroundColorState>(
             builder: (context, state) {
-              return Text(
-                'Current color is:'
-                '\n'
-                'r - ${state.r}'
-                '\n'
-                'g - ${state.g}'
-                '\n'
-                'b - ${state.b}',
-              );
+              return Text('Current color HEX is: ${state.hex}');
             },
           ),
+          const Text('Long press to copy'),
         ],
       ),
     );
