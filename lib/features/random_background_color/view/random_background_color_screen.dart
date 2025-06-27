@@ -24,8 +24,8 @@ class RandomBackgroundColorScreen extends StatelessWidget {
               onLongPress: () =>
                   _copyBackgroundColorHexToClipboard(context, state.hex),
               child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
                 color: state.color,
+                duration: const Duration(milliseconds: 200),
                 child: const Center(child: TextBlock()),
               ),
             );

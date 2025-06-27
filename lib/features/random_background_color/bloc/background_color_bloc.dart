@@ -12,7 +12,7 @@ class BackgroundColorBloc
   /// initial state value is white color
   BackgroundColorBloc() : super(BackgroundColorState(Colors.white)) {
     on<SetRandomBackgroundColor>(
-      (event, emit) => emit(BackgroundColorState(_generateRandomColor())),
+      (_, emit) => emit(BackgroundColorState(_generateRandomColor())),
     );
   }
 
