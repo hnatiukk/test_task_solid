@@ -5,11 +5,6 @@ class BackgroundColorState {
   /// Stores current background color
   final Color color;
 
-  /// Creates new state value
-  ///
-  /// [color] - object of [Color]
-  BackgroundColorState(this.color);
-
   /// Returns HEX value as [String]
   String get hex {
     final r = _channelValueToString(color.r);
@@ -18,6 +13,11 @@ class BackgroundColorState {
 
     return '#${r.toUpperCase()}${g.toUpperCase()}${b.toUpperCase()}';
   }
+
+  /// Creates new state value
+  ///
+  /// [color] - object of [Color]
+  BackgroundColorState(this.color);
 
   /// Recreates the logic of deprecated [Color] getters
   /// (red, green, blue) but returns result as a [String]
