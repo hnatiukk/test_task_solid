@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 /// State of background color bloc
 class BackgroundColorState {
+  /// Creates new state value
+  ///
+  /// [color] - object of [Color]
+  BackgroundColorState(this.color);
+
   /// Stores current background color
   final Color color;
 
@@ -10,6 +15,7 @@ class BackgroundColorState {
     final r = _channelValueToString(color.r);
     final g = _channelValueToString(color.g);
     final b = _channelValueToString(color.b);
+
     return '#${r.toUpperCase()}${g.toUpperCase()}${b.toUpperCase()}';
   }
 
@@ -18,9 +24,4 @@ class BackgroundColorState {
   String _channelValueToString(double value) {
     return ((value * 255.0).round() & 0xff).toRadixString(16).padLeft(2, '0');
   }
-
-  /// Creates new state value
-  ///
-  /// [color] - object of [Color]
-  BackgroundColorState(this.color);
 }

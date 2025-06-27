@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_task_solid/core/ui_constants.dart';
+import 'package:test_task_solid/core/constants/ui_constants.dart';
 import 'package:test_task_solid/features/random_background_color/bloc/background_color_bloc.dart';
 import 'package:test_task_solid/features/random_background_color/bloc/background_color_state.dart';
 
@@ -26,7 +26,7 @@ class TextBlock extends StatelessWidget {
         children: [
           const Text('Hey there'),
           BlocBuilder<BackgroundColorBloc, BackgroundColorState>(
-            builder: (context, state) {
+            builder: (_, state) {
               return Text('Current color HEX is: ${state.hex}');
             },
           ),
