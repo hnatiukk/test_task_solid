@@ -23,9 +23,10 @@ class BackgroundColorBloc
     const int alpha = 255;
 
     // Generating new RGB values from 0 to 255
-    final int red = Random().nextInt(256);
-    final int green = Random().nextInt(256);
-    final int blue = Random().nextInt(256);
+    final Random random = Random();
+    final int red = random.nextInt(256);
+    final int green = random.nextInt(256);
+    final int blue = random.nextInt(256);
 
     return Color.fromARGB(alpha, red, green, blue);
   }

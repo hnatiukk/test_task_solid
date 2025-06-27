@@ -10,7 +10,7 @@ import 'package:test_task_solid/features/random_background_color/widgets/text_bl
 /// Main screen of the app,
 /// changes background color and displays info at the center
 class RandomBackgroundColorScreen extends StatelessWidget {
-  /// Creates [RandomBackgroundColorScreen]
+  /// Creates [RandomBackgroundColorScreen] widget
   const RandomBackgroundColorScreen({super.key});
 
   @override

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_task_solid/core/constants.dart';
+import 'package:test_task_solid/core/ui_constants.dart';
 import 'package:test_task_solid/features/random_background_color/bloc/background_color_bloc.dart';
 import 'package:test_task_solid/features/random_background_color/bloc/background_color_state.dart';
 
-/// Widget that displays "Hey there" text
-/// and info about current background  color
+/// Widget that displays "Hey there" text,
+/// info about current background  color
+/// and "Long press to copy" text
 class TextBlock extends StatelessWidget {
-  /// Creates [TextBlock]
+  /// Creates [TextBlock] widget
   const TextBlock({super.key});
 
   @override

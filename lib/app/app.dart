@@ -5,7 +5,7 @@ import 'package:test_task_solid/features/random_background_color/view/random_bac
 
 /// Main app widget
 class App extends StatelessWidget {
-  /// Constructor of main app widget
+  /// Creates [App] widget
   const App({super.key});
 
   @override
