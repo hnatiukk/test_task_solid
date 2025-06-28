@@ -19,9 +19,11 @@ void main() {
       find.byType(AnimatedContainer),
     );
 
-    final BoxDecoration decoration =
-        animatedContainer.decoration! as BoxDecoration;
-    expect(decoration.color, Colors.white);
+    final Decoration? decoration = animatedContainer.decoration;
+    if (decoration == null) fail('Container has no initial color');
+
+    final color = (decoration as BoxDecoration).color;
+    expect(color, Colors.white);
   });
 
   testWidgets('Tap triggers color change', (tester) async {
@@ -34,24 +36,24 @@ void main() {
       ),
     );
 
-    final colorBefore =
-        (tester
-                    .widget<AnimatedContainer>(find.byType(AnimatedContainer))
-                    .decoration!
-                as BoxDecoration)
-            .color;
+    final Decoration? decorationBefore = tester
+        .widget<AnimatedContainer>(find.byType(AnimatedContainer))
+        .decoration;
+    if (decorationBefore == null) fail('Container has no color before tap');
+
+    final colorBefore = (decorationBefore as BoxDecoration).color;
 
     await tester.tap(find.byType(GestureDetector));
     await tester.pump(
       const Duration(milliseconds: 250), // waiting for animation to end
     );
 
-    final colorAfter =
-        (tester
-                    .widget<AnimatedContainer>(find.byType(AnimatedContainer))
-                    .decoration!
-                as BoxDecoration)
-            .color;
+    final Decoration? decorationAfter = tester
+        .widget<AnimatedContainer>(find.byType(AnimatedContainer))
+        .decoration;
+    if (decorationAfter == null) fail('Container has no color after tap');
+
+    final colorAfter = (decorationAfter as BoxDecoration).color;
 
     expect(colorBefore, isNot(colorAfter));
   });

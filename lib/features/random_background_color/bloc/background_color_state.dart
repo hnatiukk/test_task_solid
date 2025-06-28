@@ -5,6 +5,11 @@ class BackgroundColorState {
   /// Stores current background color
   final Color color;
 
+  static const int _maxChannelValue = 255;
+  static const int _channelMask = 0xff;
+  static const int _hexRadix = 16;
+  static const int _channelHexLength = 2;
+
   /// Returns HEX value as [String]
   String get hex {
     final r = _channelValueToString(color.r);
@@ -22,6 +27,8 @@ class BackgroundColorState {
   /// Recreates the logic of deprecated [Color] getters
   /// (red, green, blue) but returns result as a [String]
   String _channelValueToString(double value) {
-    return ((value * 255.0).round() & 0xff).toRadixString(16).padLeft(2, '0');
+    return ((value * _maxChannelValue).round() & _channelMask)
+        .toRadixString(_hexRadix)
+        .padLeft(_channelHexLength, '0');
   }
 }
